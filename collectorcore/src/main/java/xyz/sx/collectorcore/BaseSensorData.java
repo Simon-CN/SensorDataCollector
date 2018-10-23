@@ -4,7 +4,8 @@ public abstract class BaseSensorData {
     public enum DataType {
         TYPE_WIFI,
         TYPE_ACC,
-        TYPE_ORI
+        TYPE_ORI,
+        TYPE_GPS
     }
 
     public abstract DataType getDataType();

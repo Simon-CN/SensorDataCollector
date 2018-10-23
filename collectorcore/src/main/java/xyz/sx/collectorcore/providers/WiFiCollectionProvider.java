@@ -20,7 +20,6 @@ import static android.content.ContentValues.TAG;
 
 public class WiFiCollectionProvider extends BaseProvider {
     private WiFiCollection mData;
-    private long mNextTick;
     private Context mContext;
     private WifiManager mWiFiManager;
     private BroadcastReceiver mWiFiReceiver = new BroadcastReceiver() {
@@ -43,12 +42,7 @@ public class WiFiCollectionProvider extends BaseProvider {
 
     @Override
     public BaseSensorData getData() {
-        WiFiCollection tmp = mData;
-        WiFiCollection newCol = new WiFiCollection();
-        synchronized (this) {
-            mData = newCol;
-        }
-        return tmp;
+        return mData;
     }
 
     @Override
