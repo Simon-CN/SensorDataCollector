@@ -11,15 +11,15 @@ import xyz.sx.collectorcore.BaseProvider;
 import xyz.sx.collectorcore.BaseSensorData;
 import xyz.sx.collectorcore.beans.MacBean;
 import xyz.sx.collectorcore.beans.MacScanLine;
-import xyz.sx.collectorcore.collections.WiFiCollection;
+import xyz.sx.collectorcore.datas.ArraySensorData;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
-public class WiFiCollectionProvider extends BaseProvider {
-    private WiFiCollection mData;
+public class WiFiScanProvider extends BaseProvider {
+    private ArraySensorData<MacScanLine> mData;
     private Context mContext;
     private WifiManager mWiFiManager;
     private BroadcastReceiver mWiFiReceiver = new BroadcastReceiver() {
@@ -35,8 +35,8 @@ public class WiFiCollectionProvider extends BaseProvider {
         }
     };
 
-    public WiFiCollectionProvider(Context context) {
-        mData = new WiFiCollection();
+    public WiFiScanProvider(Context context) {
+        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_WIFI);
         mContext = context;
     }
 

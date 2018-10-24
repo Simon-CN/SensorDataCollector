@@ -6,20 +6,20 @@ import android.os.Bundle
 import xyz.sx.collectorcore.BaseSensorData
 import xyz.sx.collectorcore.beans.MacBean
 import xyz.sx.collectorcore.beans.MacScanLine
-import xyz.sx.collectorcore.providers.WiFiCollectionProvider
+import xyz.sx.collectorcore.providers.WiFiScanProvider
 import xyz.sx.sensordatacollector.databinding.ActivityMainBinding
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var timer: Timer
-    private lateinit var wifiCollector: WiFiCollectionProvider
+    private lateinit var wifiCollector: WiFiScanProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        wifiCollector = WiFiCollectionProvider(this)
+        wifiCollector = WiFiScanProvider(this)
         wifiCollector.start()
 
         timer = Timer()

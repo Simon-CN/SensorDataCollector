@@ -12,14 +12,12 @@ import xyz.sx.collectorcore.BaseProvider;
 import xyz.sx.collectorcore.BaseSensorData;
 import xyz.sx.collectorcore.GlobalMsgHandler;
 import xyz.sx.collectorcore.beans.GpsLocationBean;
-import xyz.sx.collectorcore.collections.GpsLocationCollection;
-
-import java.util.List;
+import xyz.sx.collectorcore.datas.ArraySensorData;
 
 public class GpsLocationProvider extends BaseProvider implements LocationListener {
     private LocationManager mLocationManager;
     private Context mContext;
-    private GpsLocationCollection mData;
+    private ArraySensorData<GpsLocationBean> mData;
 
     public GpsLocationProvider(Context context) {
         mContext = context;
@@ -37,7 +35,7 @@ public class GpsLocationProvider extends BaseProvider implements LocationListene
             GlobalMsgHandler.sendErrorMsg("Permission Check Failed: " + getClass().getName());
             return;
         }
-        mData = new GpsLocationCollection();
+        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_GPS);
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
     }
 
