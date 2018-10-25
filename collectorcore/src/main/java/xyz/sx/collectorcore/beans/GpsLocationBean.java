@@ -35,7 +35,7 @@ public class GpsLocationBean {
         return timestamp;
     }
 
-    public String dupe() {
+    public String dump() {
         return timestamp + "####" + longitude + ", " + latitude + ", " + altitude + ", " + accuracy;
     }
 }

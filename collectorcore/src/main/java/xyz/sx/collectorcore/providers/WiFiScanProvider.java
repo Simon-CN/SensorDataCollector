@@ -36,7 +36,7 @@ public class WiFiScanProvider extends BaseProvider {
     };
 
     public WiFiScanProvider(Context context) {
-        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_WIFI);
+        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_WIFI,1000);
         mContext = context;
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DoubleBufferArray<T> {
     private Object[] buffer1, buffer2;
-    private static final int OFFSET = 10;
+    private static final int OFFSET = 5;
     private static final int DEFAULT_SIZE = 50;
     private static final int DEFAULT_PERIOD = 1000;
 

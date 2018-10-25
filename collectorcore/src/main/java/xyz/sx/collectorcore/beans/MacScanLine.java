@@ -18,4 +18,12 @@ public class MacScanLine {
     public List<MacBean> getData() {
         return data;
     }
+
+    public String dump() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(timestamp);
+        for (MacBean mb : data)
+            builder.append(",").append(mb.dump());
+        return builder.toString();
+    }
 }

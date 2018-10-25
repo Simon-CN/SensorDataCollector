@@ -37,4 +37,8 @@ public class Vector3Bean {
     public void setZ(double z) {
         this.z = z;
     }
+
+    public String dump() {
+        return x + "," + y + "," + z;
+    }
 }
