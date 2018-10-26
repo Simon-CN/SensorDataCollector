@@ -24,7 +24,7 @@ public class OrientationProvider extends BaseProvider implements SensorEventList
         mAccSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mMagSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
 
-        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_ORI);
+        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_ORI,20);
     }
 
     @Override

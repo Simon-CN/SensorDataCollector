@@ -14,7 +14,7 @@ public class StepProvider extends SensorProvider {
 
     @Override
     protected void initData() {
-        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_STEP);
+        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_STEP,200);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package xyz.sx.collectorcore;
 
 import android.content.Context;
-import xyz.sx.collectorcore.beans.SensorCollection;
+import xyz.sx.collectorcore.protobuf.Sensorcollection;
 import xyz.sx.collectorcore.providers.*;
 
 import java.lang.ref.WeakReference;
@@ -64,7 +64,7 @@ public class CollectorContext {
         mTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                SensorCollection res = mCollector.collect();
+              Sensorcollection.SensorCollection res = mCollector.collect();
                 if (mListener != null) {
                     OnCollectDataListener lis = mListener.get();
                     if (lis != null)

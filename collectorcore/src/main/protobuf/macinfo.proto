@@ -1,0 +1,11 @@
+syntax="proto3";
+package xyz.sx.collectorcore.protobuf;
+message MacPair{
+    string mac=1;
+    int32 rssi=2;
+}
+
+message MacScanLine{
+    int64 timestamp=1;
+    repeated MacPair data=2;
+}

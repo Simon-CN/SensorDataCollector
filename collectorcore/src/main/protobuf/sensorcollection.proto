@@ -1,0 +1,16 @@
+syntax ="proto3";
+package xyz.sx.collectorcore.protobuf;
+import "macinfo.proto";
+import "gpsinfo.proto";
+import "vector3.proto";
+
+message SensorCollection{
+    repeated MacScanLine wifi=1;
+    repeated GpsData gps=2;
+    repeated Vector3 acc=3;
+    repeated Vector3 gyr=4;
+    repeated float ori=5;
+    repeated int64 step=6;
+
+    int64 timestamp=7;
+}

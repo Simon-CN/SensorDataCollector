@@ -1,0 +1,9 @@
+syntax="proto3";
+package xyz.sx.collectorcore.protobuf;
+message GpsData{
+    int64 timestamp=1;
+    double latitude=2;
+    double longitude=3;
+    double altitude=4;
+    double accuracy=5;
+}

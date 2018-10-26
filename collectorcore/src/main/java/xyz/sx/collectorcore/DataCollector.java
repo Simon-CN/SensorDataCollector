@@ -1,10 +1,10 @@
 package xyz.sx.collectorcore;
 
-import xyz.sx.collectorcore.beans.GpsLocationBean;
-import xyz.sx.collectorcore.beans.MacScanLine;
-import xyz.sx.collectorcore.beans.SensorCollection;
-import xyz.sx.collectorcore.beans.Vector3Bean;
 import xyz.sx.collectorcore.datas.EmptySensorData;
+import xyz.sx.collectorcore.protobuf.Gpsinfo;
+import xyz.sx.collectorcore.protobuf.Macinfo;
+import xyz.sx.collectorcore.protobuf.Sensorcollection;
+import xyz.sx.collectorcore.protobuf.Vector3OuterClass;
 
 import java.util.*;
 
@@ -24,15 +24,15 @@ class DataCollector {
             mData[data.getDataType().ordinal()] = data;
     }
 
-    SensorCollection collect() {
-        SensorCollection res = new SensorCollection();
-        res.wifi = (List<MacScanLine>) mData[BaseSensorData.DataType.TYPE_WIFI.ordinal()].getData();
-        res.acc = (List<Vector3Bean>) mData[BaseSensorData.DataType.TYPE_ACC.ordinal()].getData();
-        res.gps = (List<GpsLocationBean>) mData[BaseSensorData.DataType.TYPE_GPS.ordinal()].getData();
-        res.ori = (List<Float>) mData[BaseSensorData.DataType.TYPE_ORI.ordinal()].getData();
-        res.gyr = (List<Vector3Bean>) mData[BaseSensorData.DataType.TYPE_GYRO.ordinal()].getData();
-        res.step = (List<Long>) mData[BaseSensorData.DataType.TYPE_STEP.ordinal()].getData();
-        return res;
+    Sensorcollection.SensorCollection collect() {
+        return Sensorcollection.SensorCollection.newBuilder()
+                .addAllAcc((List<Vector3OuterClass.Vector3>) mData[BaseSensorData.DataType.TYPE_ACC.ordinal()].getData())
+                .addAllWifi((List<Macinfo.MacScanLine>) mData[BaseSensorData.DataType.TYPE_WIFI.ordinal()].getData())
+                .addAllGps((List<Gpsinfo.GpsData>) mData[BaseSensorData.DataType.TYPE_GPS.ordinal()].getData())
+                .addAllGyr((List<Vector3OuterClass.Vector3>) mData[BaseSensorData.DataType.TYPE_GYRO.ordinal()].getData())
+                .addAllOri((List<Float>) mData[BaseSensorData.DataType.TYPE_ORI.ordinal()].getData())
+                .addAllStep((List<Long>) mData[BaseSensorData.DataType.TYPE_STEP.ordinal()].getData())
+                .build();
     }
 
 }

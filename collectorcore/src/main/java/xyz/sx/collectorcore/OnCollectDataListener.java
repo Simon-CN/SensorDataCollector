@@ -1,7 +1,8 @@
 package xyz.sx.collectorcore;
 
-import xyz.sx.collectorcore.beans.SensorCollection;
+
+import xyz.sx.collectorcore.protobuf.Sensorcollection;
 
 public interface OnCollectDataListener {
-    void OnCollectData(SensorCollection collection);
+    void OnCollectData(Sensorcollection.SensorCollection collection);
 }

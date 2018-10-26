@@ -9,9 +9,8 @@ import android.net.wifi.WifiManager;
 import android.util.Log;
 import xyz.sx.collectorcore.BaseProvider;
 import xyz.sx.collectorcore.BaseSensorData;
-import xyz.sx.collectorcore.beans.MacBean;
-import xyz.sx.collectorcore.beans.MacScanLine;
 import xyz.sx.collectorcore.datas.ArraySensorData;
+import xyz.sx.collectorcore.protobuf.Macinfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 public class WiFiScanProvider extends BaseProvider {
-    private ArraySensorData<MacScanLine> mData;
+    private ArraySensorData<Macinfo.MacScanLine> mData;
     private Context mContext;
     private WifiManager mWiFiManager;
     private BroadcastReceiver mWiFiReceiver = new BroadcastReceiver() {
@@ -36,7 +35,7 @@ public class WiFiScanProvider extends BaseProvider {
     };
 
     public WiFiScanProvider(Context context) {
-        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_WIFI,1000);
+        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_WIFI, 1000);
         mContext = context;
     }
 
@@ -62,9 +61,9 @@ public class WiFiScanProvider extends BaseProvider {
 
     private void doCollect() {
         List<ScanResult> results = mWiFiManager.getScanResults();
-        List<MacBean> line = new ArrayList<>();
+        List<Macinfo.MacPair> line = new ArrayList<>();
         for (ScanResult sr : results)
-            line.add(new MacBean(sr.BSSID, sr.level));
-        mData.add(new MacScanLine(System.currentTimeMillis(), line));
+            line.add(Macinfo.MacPair.newBuilder().setMac(sr.BSSID).setRssi(sr.level).build());
+        mData.add(Macinfo.MacScanLine.newBuilder().setTimestamp(System.currentTimeMillis()).addAllData(line).build());
     }
 }

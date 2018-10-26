@@ -4,8 +4,8 @@ import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import xyz.sx.collectorcore.BaseSensorData;
-import xyz.sx.collectorcore.beans.Vector3Bean;
 import xyz.sx.collectorcore.datas.ArraySensorData;
+import xyz.sx.collectorcore.protobuf.Vector3OuterClass;
 
 public class GyroscopeProvider extends SensorProvider {
 
@@ -15,12 +15,12 @@ public class GyroscopeProvider extends SensorProvider {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        ((ArraySensorData) mData).add(new Vector3Bean(event.values[0], event.values[1], event.values[2]));
+        ((ArraySensorData) mData).add(Vector3OuterClass.Vector3.newBuilder().setX(event.values[0]).setY(event.values[1]).setZ(event.values[2]).build());
     }
 
     @Override
     protected void initData() {
-        mData = new ArraySensorData<Vector3Bean>(BaseSensorData.DataType.TYPE_GYRO);
+        mData = new ArraySensorData<Vector3OuterClass.Vector3>(BaseSensorData.DataType.TYPE_GYRO, 20);
     }
 
 }

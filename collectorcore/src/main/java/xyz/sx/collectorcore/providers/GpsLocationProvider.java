@@ -8,22 +8,21 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import xyz.sx.collectorcore.BaseProvider;
 import xyz.sx.collectorcore.BaseSensorData;
 import xyz.sx.collectorcore.GlobalMsgHandler;
-import xyz.sx.collectorcore.beans.GpsLocationBean;
 import xyz.sx.collectorcore.datas.ArraySensorData;
+import xyz.sx.collectorcore.protobuf.Gpsinfo;
 
 public class GpsLocationProvider extends BaseProvider implements LocationListener {
     private LocationManager mLocationManager;
     private Context mContext;
-    private ArraySensorData<GpsLocationBean> mData;
+    private ArraySensorData<Gpsinfo.GpsData> mData;
 
     public GpsLocationProvider(Context context) {
         mContext = context;
         mLocationManager = (LocationManager) context.getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
-        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_GPS);
+        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_GPS,333);
     }
 
     @Override
@@ -47,7 +46,7 @@ public class GpsLocationProvider extends BaseProvider implements LocationListene
 
     @Override
     public void onLocationChanged(Location location) {
-        mData.add(new GpsLocationBean(location.getLatitude(), location.getLongitude(), location.getAltitude(), location.getAccuracy(), location.getTime()));
+        mData.add(Gpsinfo.GpsData.newBuilder().setAccuracy(location.getAccuracy()).setAltitude(location.getAltitude()).setLatitude(location.getLatitude()).setLongitude(location.getLongitude()).setTimestamp(location.getTime()).build());
     }
 
     @Override
