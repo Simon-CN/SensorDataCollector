@@ -3,6 +3,7 @@ package xyz.sx.collectorcore;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -49,6 +50,7 @@ public class GlobalMsgHandler {
     }
 
     public static void sendErrorMsg(String s) {
+        Log.d("ErrMsg", s);
         Message msg = new Message();
         msg.what = 0;
         msg.obj = s;

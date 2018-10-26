@@ -23,6 +23,8 @@ public class OrientationProvider extends BaseProvider implements SensorEventList
         mSensorManager = (SensorManager) context.getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
         mAccSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mMagSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+
+        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_ORI);
     }
 
     @Override
@@ -51,11 +53,11 @@ public class OrientationProvider extends BaseProvider implements SensorEventList
     }
 
     private void calculateOrientation() {
-        float[] values= new float[3];
-        float[] R=new float[9];
+        float[] values = new float[3];
+        float[] R = new float[9];
 
-        SensorManager.getRotationMatrix(R,null,mAccValues,mMagValues);
-        SensorManager.getOrientation(R,values);
+        SensorManager.getRotationMatrix(R, null, mAccValues, mMagValues);
+        SensorManager.getOrientation(R, values);
 
         mData.add(values[0]);
     }

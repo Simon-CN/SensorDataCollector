@@ -6,7 +6,9 @@ public abstract class BaseSensorData {
         TYPE_ACC,
         TYPE_ORI,
         TYPE_GPS,
-        TYPE_GYRO
+        TYPE_GYRO,
+        TYPE_STEP,
+        TYPE_EMPTY
     }
 
     private DataType mSensorType;
