@@ -32,7 +32,7 @@ class DataCollector {
                 .addAllGyr((List<Vector3OuterClass.Vector3>) mData[BaseSensorData.DataType.TYPE_GYRO.ordinal()].getData())
                 .addAllOri((List<Float>) mData[BaseSensorData.DataType.TYPE_ORI.ordinal()].getData())
                 .addAllStep((List<Long>) mData[BaseSensorData.DataType.TYPE_STEP.ordinal()].getData())
-                .build();
+                .setTimestamp(System.currentTimeMillis()).build();
     }
 
 }

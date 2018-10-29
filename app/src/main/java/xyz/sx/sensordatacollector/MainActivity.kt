@@ -21,12 +21,10 @@ class MainActivity : AppCompatActivity() {
         val file = File(path)
         if (!file.exists())
             file.mkdirs()
-        mOutStream = FileOutputStream(path + System.currentTimeMillis() + ".pb")
 
-        CollectorContext.getInstance().init(applicationContext)
+        CollectorContext.getInstance().init(applicationContext,true)
         mCollectContext = CollectorContext.getInstance()
         mCollectContext.setOnCollectDataListener {
-            it.writeTo(mOutStream)
             runOnUiThread { mBinding.sensorsTxt.append("${System.currentTimeMillis()}\n") }
         }
         mCollectContext.start()

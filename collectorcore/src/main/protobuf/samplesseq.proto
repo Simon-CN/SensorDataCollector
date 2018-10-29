@@ -1,0 +1,9 @@
+syntax="proto3";
+package xyz.sx.collectorcore.protobuf;
+import "sensorcollection.proto";
+
+
+message Samples{
+    string desc=1;
+    repeated SensorCollection data=2;
+}
