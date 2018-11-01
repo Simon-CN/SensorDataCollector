@@ -14,7 +14,7 @@ public class MagneticProvider extends SensorProvider {
 
     @Override
     protected void initData() {
-        mData = new ArraySensorData<Vector3OuterClass.Vector3>(BaseSensorData.DataType.TYPE_MAG,20);
+        mData = new ArraySensorData<Vector3OuterClass.Vector3>(BaseSensorData.DataType.TYPE_MAG,10);
     }
 
     @Override

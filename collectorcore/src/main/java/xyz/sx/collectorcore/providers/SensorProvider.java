@@ -28,7 +28,7 @@ public abstract class SensorProvider extends BaseProvider implements SensorEvent
 
     @Override
     protected void init() {
-        mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_GAME);
+        mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     @Override

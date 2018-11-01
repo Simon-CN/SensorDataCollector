@@ -24,7 +24,7 @@ public class OrientationProvider extends BaseProvider implements SensorEventList
         mAccSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mMagSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
 
-        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_ORI,20);
+        mData = new ArraySensorData<>(BaseSensorData.DataType.TYPE_ORI,10);
     }
 
     @Override
@@ -34,8 +34,8 @@ public class OrientationProvider extends BaseProvider implements SensorEventList
 
     @Override
     protected void init() {
-        mSensorManager.registerListener(this, mAccSensor, SensorManager.SENSOR_DELAY_GAME);
-        mSensorManager.registerListener(this, mMagSensor, SensorManager.SENSOR_DELAY_GAME);
+        mSensorManager.registerListener(this, mAccSensor, SensorManager.SENSOR_DELAY_FASTEST);
+        mSensorManager.registerListener(this, mMagSensor, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     @Override
