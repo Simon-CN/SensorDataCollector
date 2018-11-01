@@ -115,33 +115,57 @@ public final class Sensorcollection {
         int index);
 
     /**
-     * <code>repeated float ori = 5;</code>
+     * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+     */
+    java.util.List<xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3> 
+        getMagList();
+    /**
+     * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+     */
+    xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3 getMag(int index);
+    /**
+     * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+     */
+    int getMagCount();
+    /**
+     * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+     */
+    java.util.List<? extends xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3OrBuilder> 
+        getMagOrBuilderList();
+    /**
+     * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+     */
+    xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3OrBuilder getMagOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated float ori = 6;</code>
      */
     java.util.List<java.lang.Float> getOriList();
     /**
-     * <code>repeated float ori = 5;</code>
+     * <code>repeated float ori = 6;</code>
      */
     int getOriCount();
     /**
-     * <code>repeated float ori = 5;</code>
+     * <code>repeated float ori = 6;</code>
      */
     float getOri(int index);
 
     /**
-     * <code>repeated int64 step = 6;</code>
+     * <code>repeated int64 step = 7;</code>
      */
     java.util.List<java.lang.Long> getStepList();
     /**
-     * <code>repeated int64 step = 6;</code>
+     * <code>repeated int64 step = 7;</code>
      */
     int getStepCount();
     /**
-     * <code>repeated int64 step = 6;</code>
+     * <code>repeated int64 step = 7;</code>
      */
     long getStep(int index);
 
     /**
-     * <code>int64 timestamp = 7;</code>
+     * <code>int64 timestamp = 8;</code>
      */
     long getTimestamp();
   }
@@ -162,6 +186,7 @@ public final class Sensorcollection {
       gps_ = java.util.Collections.emptyList();
       acc_ = java.util.Collections.emptyList();
       gyr_ = java.util.Collections.emptyList();
+      mag_ = java.util.Collections.emptyList();
       ori_ = java.util.Collections.emptyList();
       step_ = java.util.Collections.emptyList();
       timestamp_ = 0L;
@@ -227,20 +252,29 @@ public final class Sensorcollection {
                   input.readMessage(xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.parser(), extensionRegistry));
               break;
             }
-            case 45: {
+            case 42: {
               if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                ori_ = new java.util.ArrayList<java.lang.Float>();
+                mag_ = new java.util.ArrayList<xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3>();
                 mutable_bitField0_ |= 0x00000010;
+              }
+              mag_.add(
+                  input.readMessage(xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.parser(), extensionRegistry));
+              break;
+            }
+            case 53: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                ori_ = new java.util.ArrayList<java.lang.Float>();
+                mutable_bitField0_ |= 0x00000020;
               }
               ori_.add(input.readFloat());
               break;
             }
-            case 42: {
+            case 50: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020) && input.getBytesUntilLimit() > 0) {
                 ori_ = new java.util.ArrayList<java.lang.Float>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000020;
               }
               while (input.getBytesUntilLimit() > 0) {
                 ori_.add(input.readFloat());
@@ -248,20 +282,20 @@ public final class Sensorcollection {
               input.popLimit(limit);
               break;
             }
-            case 48: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+            case 56: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
                 step_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000040;
               }
               step_.add(input.readInt64());
               break;
             }
-            case 50: {
+            case 58: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040) && input.getBytesUntilLimit() > 0) {
                 step_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000040;
               }
               while (input.getBytesUntilLimit() > 0) {
                 step_.add(input.readInt64());
@@ -269,7 +303,7 @@ public final class Sensorcollection {
               input.popLimit(limit);
               break;
             }
-            case 56: {
+            case 64: {
 
               timestamp_ = input.readInt64();
               break;
@@ -302,9 +336,12 @@ public final class Sensorcollection {
           gyr_ = java.util.Collections.unmodifiableList(gyr_);
         }
         if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-          ori_ = java.util.Collections.unmodifiableList(ori_);
+          mag_ = java.util.Collections.unmodifiableList(mag_);
         }
         if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          ori_ = java.util.Collections.unmodifiableList(ori_);
+        }
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
           step_ = java.util.Collections.unmodifiableList(step_);
         }
         this.unknownFields = unknownFields.build();
@@ -465,56 +502,91 @@ public final class Sensorcollection {
       return gyr_.get(index);
     }
 
-    public static final int ORI_FIELD_NUMBER = 5;
+    public static final int MAG_FIELD_NUMBER = 5;
+    private java.util.List<xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3> mag_;
+    /**
+     * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+     */
+    public java.util.List<xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3> getMagList() {
+      return mag_;
+    }
+    /**
+     * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+     */
+    public java.util.List<? extends xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3OrBuilder> 
+        getMagOrBuilderList() {
+      return mag_;
+    }
+    /**
+     * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+     */
+    public int getMagCount() {
+      return mag_.size();
+    }
+    /**
+     * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+     */
+    public xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3 getMag(int index) {
+      return mag_.get(index);
+    }
+    /**
+     * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+     */
+    public xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3OrBuilder getMagOrBuilder(
+        int index) {
+      return mag_.get(index);
+    }
+
+    public static final int ORI_FIELD_NUMBER = 6;
     private java.util.List<java.lang.Float> ori_;
     /**
-     * <code>repeated float ori = 5;</code>
+     * <code>repeated float ori = 6;</code>
      */
     public java.util.List<java.lang.Float>
         getOriList() {
       return ori_;
     }
     /**
-     * <code>repeated float ori = 5;</code>
+     * <code>repeated float ori = 6;</code>
      */
     public int getOriCount() {
       return ori_.size();
     }
     /**
-     * <code>repeated float ori = 5;</code>
+     * <code>repeated float ori = 6;</code>
      */
     public float getOri(int index) {
       return ori_.get(index);
     }
     private int oriMemoizedSerializedSize = -1;
 
-    public static final int STEP_FIELD_NUMBER = 6;
+    public static final int STEP_FIELD_NUMBER = 7;
     private java.util.List<java.lang.Long> step_;
     /**
-     * <code>repeated int64 step = 6;</code>
+     * <code>repeated int64 step = 7;</code>
      */
     public java.util.List<java.lang.Long>
         getStepList() {
       return step_;
     }
     /**
-     * <code>repeated int64 step = 6;</code>
+     * <code>repeated int64 step = 7;</code>
      */
     public int getStepCount() {
       return step_.size();
     }
     /**
-     * <code>repeated int64 step = 6;</code>
+     * <code>repeated int64 step = 7;</code>
      */
     public long getStep(int index) {
       return step_.get(index);
     }
     private int stepMemoizedSerializedSize = -1;
 
-    public static final int TIMESTAMP_FIELD_NUMBER = 7;
+    public static final int TIMESTAMP_FIELD_NUMBER = 8;
     private long timestamp_;
     /**
-     * <code>int64 timestamp = 7;</code>
+     * <code>int64 timestamp = 8;</code>
      */
     public long getTimestamp() {
       return timestamp_;
@@ -547,22 +619,25 @@ public final class Sensorcollection {
       for (int i = 0; i < gyr_.size(); i++) {
         output.writeMessage(4, gyr_.get(i));
       }
+      for (int i = 0; i < mag_.size(); i++) {
+        output.writeMessage(5, mag_.get(i));
+      }
       if (getOriList().size() > 0) {
-        output.writeUInt32NoTag(42);
+        output.writeUInt32NoTag(50);
         output.writeUInt32NoTag(oriMemoizedSerializedSize);
       }
       for (int i = 0; i < ori_.size(); i++) {
         output.writeFloatNoTag(ori_.get(i));
       }
       if (getStepList().size() > 0) {
-        output.writeUInt32NoTag(50);
+        output.writeUInt32NoTag(58);
         output.writeUInt32NoTag(stepMemoizedSerializedSize);
       }
       for (int i = 0; i < step_.size(); i++) {
         output.writeInt64NoTag(step_.get(i));
       }
       if (timestamp_ != 0L) {
-        output.writeInt64(7, timestamp_);
+        output.writeInt64(8, timestamp_);
       }
       unknownFields.writeTo(output);
     }
@@ -588,6 +663,10 @@ public final class Sensorcollection {
       for (int i = 0; i < gyr_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, gyr_.get(i));
+      }
+      for (int i = 0; i < mag_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, mag_.get(i));
       }
       {
         int dataSize = 0;
@@ -616,7 +695,7 @@ public final class Sensorcollection {
       }
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(7, timestamp_);
+          .computeInt64Size(8, timestamp_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -642,6 +721,8 @@ public final class Sensorcollection {
           .equals(other.getAccList());
       result = result && getGyrList()
           .equals(other.getGyrList());
+      result = result && getMagList()
+          .equals(other.getMagList());
       result = result && getOriList()
           .equals(other.getOriList());
       result = result && getStepList()
@@ -674,6 +755,10 @@ public final class Sensorcollection {
       if (getGyrCount() > 0) {
         hash = (37 * hash) + GYR_FIELD_NUMBER;
         hash = (53 * hash) + getGyrList().hashCode();
+      }
+      if (getMagCount() > 0) {
+        hash = (37 * hash) + MAG_FIELD_NUMBER;
+        hash = (53 * hash) + getMagList().hashCode();
       }
       if (getOriCount() > 0) {
         hash = (37 * hash) + ORI_FIELD_NUMBER;
@@ -818,6 +903,7 @@ public final class Sensorcollection {
           getGpsFieldBuilder();
           getAccFieldBuilder();
           getGyrFieldBuilder();
+          getMagFieldBuilder();
         }
       }
       @java.lang.Override
@@ -847,10 +933,16 @@ public final class Sensorcollection {
         } else {
           gyrBuilder_.clear();
         }
+        if (magBuilder_ == null) {
+          mag_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          magBuilder_.clear();
+        }
         ori_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000010);
-        step_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000020);
+        step_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000040);
         timestamp_ = 0L;
 
         return this;
@@ -917,14 +1009,23 @@ public final class Sensorcollection {
         } else {
           result.gyr_ = gyrBuilder_.build();
         }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (magBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            mag_ = java.util.Collections.unmodifiableList(mag_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.mag_ = mag_;
+        } else {
+          result.mag_ = magBuilder_.build();
+        }
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
           ori_ = java.util.Collections.unmodifiableList(ori_);
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
         }
         result.ori_ = ori_;
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
           step_ = java.util.Collections.unmodifiableList(step_);
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000040);
         }
         result.step_ = step_;
         result.timestamp_ = timestamp_;
@@ -1081,10 +1182,36 @@ public final class Sensorcollection {
             }
           }
         }
+        if (magBuilder_ == null) {
+          if (!other.mag_.isEmpty()) {
+            if (mag_.isEmpty()) {
+              mag_ = other.mag_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureMagIsMutable();
+              mag_.addAll(other.mag_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.mag_.isEmpty()) {
+            if (magBuilder_.isEmpty()) {
+              magBuilder_.dispose();
+              magBuilder_ = null;
+              mag_ = other.mag_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              magBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getMagFieldBuilder() : null;
+            } else {
+              magBuilder_.addAllMessages(other.mag_);
+            }
+          }
+        }
         if (!other.ori_.isEmpty()) {
           if (ori_.isEmpty()) {
             ori_ = other.ori_;
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000020);
           } else {
             ensureOriIsMutable();
             ori_.addAll(other.ori_);
@@ -1094,7 +1221,7 @@ public final class Sensorcollection {
         if (!other.step_.isEmpty()) {
           if (step_.isEmpty()) {
             step_ = other.step_;
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000040);
           } else {
             ensureStepIsMutable();
             step_.addAll(other.step_);
@@ -2094,34 +2221,274 @@ public final class Sensorcollection {
         return gyrBuilder_;
       }
 
-      private java.util.List<java.lang.Float> ori_ = java.util.Collections.emptyList();
-      private void ensureOriIsMutable() {
+      private java.util.List<xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3> mag_ =
+        java.util.Collections.emptyList();
+      private void ensureMagIsMutable() {
         if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-          ori_ = new java.util.ArrayList<java.lang.Float>(ori_);
+          mag_ = new java.util.ArrayList<xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3>(mag_);
           bitField0_ |= 0x00000010;
          }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.Builder, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3OrBuilder> magBuilder_;
+
       /**
-       * <code>repeated float ori = 5;</code>
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public java.util.List<xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3> getMagList() {
+        if (magBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(mag_);
+        } else {
+          return magBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public int getMagCount() {
+        if (magBuilder_ == null) {
+          return mag_.size();
+        } else {
+          return magBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3 getMag(int index) {
+        if (magBuilder_ == null) {
+          return mag_.get(index);
+        } else {
+          return magBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public Builder setMag(
+          int index, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3 value) {
+        if (magBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMagIsMutable();
+          mag_.set(index, value);
+          onChanged();
+        } else {
+          magBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public Builder setMag(
+          int index, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.Builder builderForValue) {
+        if (magBuilder_ == null) {
+          ensureMagIsMutable();
+          mag_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          magBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public Builder addMag(xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3 value) {
+        if (magBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMagIsMutable();
+          mag_.add(value);
+          onChanged();
+        } else {
+          magBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public Builder addMag(
+          int index, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3 value) {
+        if (magBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMagIsMutable();
+          mag_.add(index, value);
+          onChanged();
+        } else {
+          magBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public Builder addMag(
+          xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.Builder builderForValue) {
+        if (magBuilder_ == null) {
+          ensureMagIsMutable();
+          mag_.add(builderForValue.build());
+          onChanged();
+        } else {
+          magBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public Builder addMag(
+          int index, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.Builder builderForValue) {
+        if (magBuilder_ == null) {
+          ensureMagIsMutable();
+          mag_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          magBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public Builder addAllMag(
+          java.lang.Iterable<? extends xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3> values) {
+        if (magBuilder_ == null) {
+          ensureMagIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, mag_);
+          onChanged();
+        } else {
+          magBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public Builder clearMag() {
+        if (magBuilder_ == null) {
+          mag_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          magBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public Builder removeMag(int index) {
+        if (magBuilder_ == null) {
+          ensureMagIsMutable();
+          mag_.remove(index);
+          onChanged();
+        } else {
+          magBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.Builder getMagBuilder(
+          int index) {
+        return getMagFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3OrBuilder getMagOrBuilder(
+          int index) {
+        if (magBuilder_ == null) {
+          return mag_.get(index);  } else {
+          return magBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public java.util.List<? extends xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3OrBuilder> 
+           getMagOrBuilderList() {
+        if (magBuilder_ != null) {
+          return magBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(mag_);
+        }
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.Builder addMagBuilder() {
+        return getMagFieldBuilder().addBuilder(
+            xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.Builder addMagBuilder(
+          int index) {
+        return getMagFieldBuilder().addBuilder(
+            index, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .xyz.sx.collectorcore.protobuf.Vector3 mag = 5;</code>
+       */
+      public java.util.List<xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.Builder> 
+           getMagBuilderList() {
+        return getMagFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.Builder, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3OrBuilder> 
+          getMagFieldBuilder() {
+        if (magBuilder_ == null) {
+          magBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3.Builder, xyz.sx.collectorcore.protobuf.Vector3OuterClass.Vector3OrBuilder>(
+                  mag_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          mag_ = null;
+        }
+        return magBuilder_;
+      }
+
+      private java.util.List<java.lang.Float> ori_ = java.util.Collections.emptyList();
+      private void ensureOriIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          ori_ = new java.util.ArrayList<java.lang.Float>(ori_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+      /**
+       * <code>repeated float ori = 6;</code>
        */
       public java.util.List<java.lang.Float>
           getOriList() {
         return java.util.Collections.unmodifiableList(ori_);
       }
       /**
-       * <code>repeated float ori = 5;</code>
+       * <code>repeated float ori = 6;</code>
        */
       public int getOriCount() {
         return ori_.size();
       }
       /**
-       * <code>repeated float ori = 5;</code>
+       * <code>repeated float ori = 6;</code>
        */
       public float getOri(int index) {
         return ori_.get(index);
       }
       /**
-       * <code>repeated float ori = 5;</code>
+       * <code>repeated float ori = 6;</code>
        */
       public Builder setOri(
           int index, float value) {
@@ -2131,7 +2498,7 @@ public final class Sensorcollection {
         return this;
       }
       /**
-       * <code>repeated float ori = 5;</code>
+       * <code>repeated float ori = 6;</code>
        */
       public Builder addOri(float value) {
         ensureOriIsMutable();
@@ -2140,7 +2507,7 @@ public final class Sensorcollection {
         return this;
       }
       /**
-       * <code>repeated float ori = 5;</code>
+       * <code>repeated float ori = 6;</code>
        */
       public Builder addAllOri(
           java.lang.Iterable<? extends java.lang.Float> values) {
@@ -2151,43 +2518,43 @@ public final class Sensorcollection {
         return this;
       }
       /**
-       * <code>repeated float ori = 5;</code>
+       * <code>repeated float ori = 6;</code>
        */
       public Builder clearOri() {
         ori_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
 
       private java.util.List<java.lang.Long> step_ = java.util.Collections.emptyList();
       private void ensureStepIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
           step_ = new java.util.ArrayList<java.lang.Long>(step_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000040;
          }
       }
       /**
-       * <code>repeated int64 step = 6;</code>
+       * <code>repeated int64 step = 7;</code>
        */
       public java.util.List<java.lang.Long>
           getStepList() {
         return java.util.Collections.unmodifiableList(step_);
       }
       /**
-       * <code>repeated int64 step = 6;</code>
+       * <code>repeated int64 step = 7;</code>
        */
       public int getStepCount() {
         return step_.size();
       }
       /**
-       * <code>repeated int64 step = 6;</code>
+       * <code>repeated int64 step = 7;</code>
        */
       public long getStep(int index) {
         return step_.get(index);
       }
       /**
-       * <code>repeated int64 step = 6;</code>
+       * <code>repeated int64 step = 7;</code>
        */
       public Builder setStep(
           int index, long value) {
@@ -2197,7 +2564,7 @@ public final class Sensorcollection {
         return this;
       }
       /**
-       * <code>repeated int64 step = 6;</code>
+       * <code>repeated int64 step = 7;</code>
        */
       public Builder addStep(long value) {
         ensureStepIsMutable();
@@ -2206,7 +2573,7 @@ public final class Sensorcollection {
         return this;
       }
       /**
-       * <code>repeated int64 step = 6;</code>
+       * <code>repeated int64 step = 7;</code>
        */
       public Builder addAllStep(
           java.lang.Iterable<? extends java.lang.Long> values) {
@@ -2217,24 +2584,24 @@ public final class Sensorcollection {
         return this;
       }
       /**
-       * <code>repeated int64 step = 6;</code>
+       * <code>repeated int64 step = 7;</code>
        */
       public Builder clearStep() {
         step_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
 
       private long timestamp_ ;
       /**
-       * <code>int64 timestamp = 7;</code>
+       * <code>int64 timestamp = 8;</code>
        */
       public long getTimestamp() {
         return timestamp_;
       }
       /**
-       * <code>int64 timestamp = 7;</code>
+       * <code>int64 timestamp = 8;</code>
        */
       public Builder setTimestamp(long value) {
         
@@ -2243,7 +2610,7 @@ public final class Sensorcollection {
         return this;
       }
       /**
-       * <code>int64 timestamp = 7;</code>
+       * <code>int64 timestamp = 8;</code>
        */
       public Builder clearTimestamp() {
         
@@ -2320,14 +2687,16 @@ public final class Sensorcollection {
     java.lang.String[] descriptorData = {
       "\n\026sensorcollection.proto\022\035xyz.sx.collect" +
       "orcore.protobuf\032\rmacinfo.proto\032\rgpsinfo." +
-      "proto\032\rvector3.proto\"\231\002\n\020SensorCollectio" +
+      "proto\032\rvector3.proto\"\316\002\n\020SensorCollectio" +
       "n\0228\n\004wifi\030\001 \003(\0132*.xyz.sx.collectorcore.p" +
       "rotobuf.MacScanLine\0223\n\003gps\030\002 \003(\0132&.xyz.s" +
       "x.collectorcore.protobuf.GpsData\0223\n\003acc\030" +
       "\003 \003(\0132&.xyz.sx.collectorcore.protobuf.Ve" +
       "ctor3\0223\n\003gyr\030\004 \003(\0132&.xyz.sx.collectorcor" +
-      "e.protobuf.Vector3\022\013\n\003ori\030\005 \003(\002\022\014\n\004step\030" +
-      "\006 \003(\003\022\021\n\ttimestamp\030\007 \001(\003b\006proto3"
+      "e.protobuf.Vector3\0223\n\003mag\030\005 \003(\0132&.xyz.sx" +
+      ".collectorcore.protobuf.Vector3\022\013\n\003ori\030\006" +
+      " \003(\002\022\014\n\004step\030\007 \003(\003\022\021\n\ttimestamp\030\010 \001(\003b\006p" +
+      "roto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2349,7 +2718,7 @@ public final class Sensorcollection {
     internal_static_xyz_sx_collectorcore_protobuf_SensorCollection_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_xyz_sx_collectorcore_protobuf_SensorCollection_descriptor,
-        new java.lang.String[] { "Wifi", "Gps", "Acc", "Gyr", "Ori", "Step", "Timestamp", });
+        new java.lang.String[] { "Wifi", "Gps", "Acc", "Gyr", "Mag", "Ori", "Step", "Timestamp", });
     xyz.sx.collectorcore.protobuf.Macinfo.getDescriptor();
     xyz.sx.collectorcore.protobuf.Gpsinfo.getDescriptor();
     xyz.sx.collectorcore.protobuf.Vector3OuterClass.getDescriptor();

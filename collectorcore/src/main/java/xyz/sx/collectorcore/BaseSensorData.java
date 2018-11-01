@@ -8,6 +8,7 @@ public abstract class BaseSensorData {
         TYPE_GPS,
         TYPE_GYRO,
         TYPE_STEP,
+        TYPE_MAG,
         TYPE_EMPTY
     }
 

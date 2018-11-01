@@ -58,7 +58,7 @@ public class CollectorContext {
         mProviders.add(new GyroscopeProvider(tmp));
         mProviders.add(new StepProvider(tmp));
         mProviders.add(new OrientationProvider(tmp));
-
+        mProviders.add(new MagneticProvider(tmp));
         for (BaseProvider bp : mProviders)
             mCollector.addDataSource(bp.getData());
     }
@@ -93,7 +93,7 @@ public class CollectorContext {
                 }
                 if (needFileWrite) {
                     mCollections.add(res);
-                    if (mCollections.size() > 5)
+                    if (mCollections.size() > 100)
                         writeToFile();
                 }
             }

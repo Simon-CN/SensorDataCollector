@@ -12,7 +12,6 @@ import java.io.FileOutputStream
 class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mCollectContext: CollectorContext
-    private lateinit var mOutStream: FileOutputStream
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

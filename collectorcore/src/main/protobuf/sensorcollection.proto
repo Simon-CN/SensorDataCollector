@@ -9,8 +9,10 @@ message SensorCollection{
     repeated GpsData gps=2;
     repeated Vector3 acc=3;
     repeated Vector3 gyr=4;
-    repeated float ori=5;
-    repeated int64 step=6;
+	repeated Vector3 mag=5;
+    repeated float ori=6;
+    repeated int64 step=7;
 
-    int64 timestamp=7;
+
+    int64 timestamp=8;
 }
