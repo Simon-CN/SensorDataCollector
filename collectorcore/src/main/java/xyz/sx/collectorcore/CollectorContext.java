@@ -2,6 +2,7 @@ package xyz.sx.collectorcore;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 import xyz.sx.collectorcore.protobuf.Samplesseq;
 import xyz.sx.collectorcore.protobuf.Sensorcollection;
 import xyz.sx.collectorcore.providers.*;
@@ -22,6 +23,7 @@ public class CollectorContext {
     private List<Sensorcollection.SensorCollection> mCollections;
     private int mSeq = 0;
     private long mBeginTime;
+    private boolean isRunning = false;
 
     private static CollectorContext mInstance = null;
 
@@ -68,7 +70,9 @@ public class CollectorContext {
     }
 
     public void start() {
-        stop();
+        if (isRunning)
+            return;
+        isRunning = true;
         mBeginTime = System.currentTimeMillis();
         mSeq = 0;
         if (needFileWrite) {
@@ -84,6 +88,7 @@ public class CollectorContext {
             @Override
             public void run() {
                 Sensorcollection.SensorCollection res = mCollector.collect();
+                Log.d("Collect Status", "Collect once: " + System.currentTimeMillis());
                 if (mListener != null) {
                     OnCollectDataListener lis = mListener.get();
                     if (lis != null)
@@ -135,6 +140,9 @@ public class CollectorContext {
     }
 
     public void stop() {
+        if (!isRunning)
+            return;
+        isRunning = false;
         for (BaseProvider bp : mProviders)
             bp.stop();
         if (mTimer != null) {
@@ -144,6 +152,7 @@ public class CollectorContext {
         }
         if (mCollections != null && mCollections.size() > 0)
             writeToFile();
+        mCollector.reset();
     }
 
     public void destroy() {

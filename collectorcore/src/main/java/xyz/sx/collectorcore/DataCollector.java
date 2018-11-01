@@ -36,4 +36,9 @@ class DataCollector {
                 .setTimestamp(System.currentTimeMillis()).build();
     }
 
+    void reset() {
+        for (BaseSensorData sd : mData)
+            sd.reset();
+    }
+
 }

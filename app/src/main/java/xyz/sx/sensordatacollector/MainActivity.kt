@@ -5,11 +5,17 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import xyz.sx.collectorcore.CollectorContext
+import xyz.sx.collectorcore.OnCollectDataListener
+import xyz.sx.collectorcore.protobuf.Sensorcollection
 import xyz.sx.sensordatacollector.databinding.ActivityMainBinding
 import java.io.File
 import java.io.FileOutputStream
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnCollectDataListener {
+    override fun OnCollectData(collection: Sensorcollection.SensorCollection?) {
+        runOnUiThread { mBinding.sensorsTxt.append("${System.currentTimeMillis()}\n") }
+    }
+
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mCollectContext: CollectorContext
 
@@ -21,12 +27,12 @@ class MainActivity : AppCompatActivity() {
         if (!file.exists())
             file.mkdirs()
 
-        CollectorContext.getInstance().init(applicationContext,true)
+        CollectorContext.getInstance().init(applicationContext, true)
         mCollectContext = CollectorContext.getInstance()
-        mCollectContext.setOnCollectDataListener {
-            runOnUiThread { mBinding.sensorsTxt.append("${System.currentTimeMillis()}\n") }
-        }
-        mCollectContext.start()
+        mCollectContext.setOnCollectDataListener(this)
+        mBinding.startBtn.setOnClickListener { mCollectContext.start() }
+        mBinding.stopBtn.setOnClickListener { mCollectContext.stop() }
+
     }
 
     override fun onDestroy() {

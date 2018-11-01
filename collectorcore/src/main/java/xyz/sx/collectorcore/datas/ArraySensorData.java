@@ -26,4 +26,8 @@ public class ArraySensorData<T> extends BaseSensorData {
         return mData.getData();
     }
 
+    @Override
+    public void reset() {
+       mData.reset();
+    }
 }

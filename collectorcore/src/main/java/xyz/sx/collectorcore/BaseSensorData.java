@@ -28,4 +28,6 @@ public abstract class BaseSensorData {
         return "";
     }
 
+    public void reset(){}
+
 }

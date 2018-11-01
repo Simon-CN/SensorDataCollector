@@ -100,8 +100,12 @@ public class DoubleBufferArray<T> {
                 res.add((T) buffer2[j]);
     }
 
-    public void clear() {
-        Arrays.fill(buffer1, null);
-        Arrays.fill(buffer2, null);
+    public void reset(){
+        flag = true;
+        hasOverflow = false;
+        length1 = 0;
+        length2 = 0;
+        preTime = 0;
     }
+
 }
