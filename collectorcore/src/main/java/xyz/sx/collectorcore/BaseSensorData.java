@@ -24,10 +24,6 @@ public abstract class BaseSensorData {
 
     public abstract Object getData();
 
-    public String dump() {
-        return "";
-    }
-
     public void reset(){}
 
 }
